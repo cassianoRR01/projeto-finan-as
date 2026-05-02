@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template: 40px 40px 1fr / 50px 1fr;
+}
+
+header {
+    grid-area: 1 / 1 / 2 / -1;
+    background-color: rgb(58, 58, 58);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+nav {
+    grid-area: 2 / 1 / -1 / 2;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.icones {
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.icones p {
+    padding-top: 5px;
+    padding-bottom: 25px;
+    text-align: center;
+}
+
+.dinheiro {
+    grid-area: 2 / 2 / 3 / -1;
+    background-color: gray;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bolder;
+}
+
+.contas {
+    grid-area: 3 / 2 / -1 / -1;
+    background-color: lightgray;
+}
