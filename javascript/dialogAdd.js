@@ -7,6 +7,10 @@ const modal = document.getElementById('modalConta');
 // Seleciona botão fechar
 const fechar = document.getElementById('fechar');
 
+// Variavel de Controle do total mensal
+let totalMensal = 0;
+let pendente = 0;
+
 // Evento de clique no "+"
 botaoAdd.addEventListener('click', () => {
     modal.showModal();
@@ -24,7 +28,7 @@ document.getElementById('formConta').addEventListener('submit', (e) => {
     const nome = document.getElementById('nome').value;
     const abertura = document.getElementById('abertura').value;
     const vencimento = document.getElementById('vencimento').value;
-    const valor = document.getElementById('valor').value;
+    const valor = parseFloat(document.getElementById('valor').value);
 
     console.log(nome, abertura, vencimento, valor);
     
@@ -44,6 +48,14 @@ document.getElementById('formConta').addEventListener('submit', (e) => {
 
     // Adiciona a conta na tela
     listaContas.appendChild(contaDiv);
+
+    // Adiciona o valor da conta ao total mensal
+    totalMensal = totalMensal + valor;
+    pendente = pendente + valor;
+    
+    // Atualiza o total mensal na tela
+    document.getElementById('totalMen').textContent = `Total mensal: R$ ${totalMensal.toFixed(2)}`;
+    document.getElementById('pendente').textContent = `Pendente: R$ ${pendente.toFixed(2)}`;
 
     // Fecha o modal
     modal.close();
