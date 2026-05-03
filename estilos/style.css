@@ -45,6 +45,7 @@ nav {
     padding-top: 5px;
     padding-bottom: 25px;
     text-align: center;
+    
 }
 
 .dinheiro {
@@ -61,4 +62,44 @@ nav {
 .contas {
     grid-area: 3 / 2 / -1 / -1;
     background-color: lightgray;
+}
+
+.icones p:hover {
+    color: rgb(58, 58, 58);
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#btnAdd:hover {
+    color: rgb(58, 58, 58);
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+dialog {
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+dialog input {
+    padding: 5px;
+}
+
+dialog button {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.contas div {
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
 }
