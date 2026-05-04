@@ -44,6 +44,7 @@ document.getElementById('formConta').addEventListener('submit', (e) => {
         <p>Abertura: ${abertura}</p>
         <p>Vencimento: ${vencimento}</p>
         <p>Valor: R$ ${valor}</p>
+        <input type="checkbox">
     `;
 
     // Adiciona a conta na tela

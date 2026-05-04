@@ -9,12 +9,12 @@
 </head>
 <body>
     <header>
-        <p><span class="material-symbols-outlined">close</span></p>
+        <span class="material-symbols-outlined">dark_mode</span>
     </header>
     
     <nav>
         <div class="icones">
-            <p><span class="material-symbols-outlined">person</span></p>
+            <p><span class="material-symbols-outlined" id="BtnLogin">person</span></p>
             <p><span class="material-symbols-outlined">calendar_month</span></p>
             <p><span class="material-symbols-outlined">notifications</span></p>
             <p><span class="material-symbols-outlined">history</span></p>
@@ -58,9 +58,28 @@
             </div>
         </form>
     </dialog>
+
+    <dialog id="loginDialog">
+        <form method="post">
+            <label for="login">Login:</label>
+            <input type="text">
+
+            <br>
+
+            <label for="senha">Senha:</label>
+            <input type="password">
+
+            <br>
+            
+            <div >
+                <button type="submit">Enviar</button>
+                <button id="fecharLogin">Cancelar</button>
+            </div>
+        </form>
+    </dialog>
     
 
     <script src="javascript/dialogAdd.js"></script>
-    
+    <script src="javascript/login.js"></script>
 </body>
 </html>
