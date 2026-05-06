@@ -16,17 +16,21 @@ body {
 
 header {
     grid-area: 1 / 1 / 2 / -1;
-    background-color: rgb(58, 58, 58);
+    background-color: rgb(5, 173, 5);
     color: white;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 5px;
+    padding-right: 10px;
+}
+
+header span {
+    color: white;
 }
 
 nav {
     grid-area: 2 / 1 / -1 / 2;
-    background-color: black;
+    background-color: rgb(134,218, 134);
     color: white;
     display: flex;
     flex-direction: column;
@@ -35,22 +39,41 @@ nav {
     padding: 5px;
 }
 
+#btnDarkMode {
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: black;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+#btnDarkMode:hover {
+    font-size: 1.7em;
+}
+
 .icones {
     padding-bottom: 10px;
     display: flex;
     flex-direction: column;
+    color:  black;
 }
 
 .icones p {
     padding-top: 5px;
     padding-bottom: 25px;
     text-align: center;
-    
+}
+
+.icones p:hover {
+    color: rgb(4, 133, 4);
+    font-weight: bolder;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .dinheiro {
     grid-area: 2 / 2 / 3 / -1;
-    background-color: gray;
+    background-color: #878787;
     color: white;
     display: flex;
     flex-direction: row;
@@ -61,18 +84,23 @@ nav {
 
 .contas {
     grid-area: 3 / 2 / -1 / -1;
-    background-color: lightgray;
+    background-color: white;
 }
 
-.icones p:hover {
-    color: rgb(58, 58, 58);
-    font-weight: bolder;
-    cursor: pointer;
+.contas div {
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#btnAdd {
+    color: black;
+    transition: 0.3s;
 }
 
 #btnAdd:hover {
-    color: rgb(58, 58, 58);
-    font-weight: bolder;
+    color: rgb(4, 133, 4);
     cursor: pointer;
 }
 
@@ -98,9 +126,39 @@ dialog button {
     cursor: pointer;
 }
 
-.contas div {
-    background-color: white;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 8px;
+.dark .contas {
+    background-color: black;
 }
+
+.dark nav {
+    background-color: rgb(0, 75, 0);  
+}
+
+.dark nav span {
+    color: white;
+}
+
+.dark nav span:hover {
+    color: rgb(58, 122, 58);
+}
+
+.dark #btnAdd {
+    color: white;
+}
+
+.dark #btnAdd:hover {
+    color: rgb(58, 122, 58);
+}
+
+.dark header span {
+    color: black;
+}
+
+.dark #btnDarkMode {
+    background-color: white;
+}
+
+.dark header {
+    background-color: rgb(0, 53, 0);
+}
+
