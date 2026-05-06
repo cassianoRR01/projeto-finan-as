@@ -10,6 +10,7 @@ const fechar = document.getElementById('fechar');
 // Variavel de Controle do total mensal
 let totalMensal = 0;
 let pendente = 0;
+let n_conta = 0;
 
 // Evento de clique no "+"
 botaoAdd.addEventListener('click', () => {
@@ -25,6 +26,10 @@ fechar.addEventListener('click', () => {
 document.getElementById('formConta').addEventListener('submit', (e) => {
     e.preventDefault();
 
+    // Variavel totalizadora para cada vez que se criar uma nova conta
+    n_conta = n_conta + 1;
+    let str = 'conta' + n_conta;
+
     const nome = document.getElementById('nome').value;
     const abertura = document.getElementById('abertura').value;
     const vencimento = document.getElementById('vencimento').value;
@@ -35,8 +40,9 @@ document.getElementById('formConta').addEventListener('submit', (e) => {
     // Seleciona a div onde vai ficar as contas
     const listaContas = document.querySelector('.contas');
 
-    // Criando uma nova div (card da conta)
+    // Criando uma nova div, cada uma com nome diferente (Ex.: conta1, conta2, ...)
     const contaDiv = document.createElement('div');
+    contaDiv.setAttribute('id', `${str}`);
 
     // Adicionando conteúdo dentro da div
     contaDiv.innerHTML = `
@@ -44,7 +50,7 @@ document.getElementById('formConta').addEventListener('submit', (e) => {
         <p>Abertura: ${abertura}</p>
         <p>Vencimento: ${vencimento}</p>
         <p>Valor: R$ ${valor}</p>
-        <input type="checkbox">
+        <button onclick="${str}.remove()">Pago</button>
     `;
 
     // Adiciona a conta na tela
@@ -63,4 +69,5 @@ document.getElementById('formConta').addEventListener('submit', (e) => {
 
     // Limpa o formulário
     document.getElementById('formConta').reset();
+    
 });
