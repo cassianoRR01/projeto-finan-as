@@ -37,6 +37,10 @@ document.getElementById('formConta').addEventListener('submit', (e) => {
 
     console.log(nome, abertura, vencimento, valor);
     
+    if(abertura >= vencimento){
+        console.log('Abertura depois do Vencimento');
+    }
+
     // Seleciona a div onde vai ficar as contas
     const listaContas = document.querySelector('.contas');
 
