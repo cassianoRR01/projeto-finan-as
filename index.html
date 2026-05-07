@@ -9,19 +9,24 @@
 </head>
 <body>
     <header>
-        <span class="material-symbols-outlined">dark_mode</span>
+        <span class="material-symbols-outlined" id="btnDarkMode">dark_mode</span>
     </header>
     
+
     <nav>
         <div class="icones">
-            <p><span class="material-symbols-outlined" id="BtnLogin">person</span></p>
-            <p><span class="material-symbols-outlined">calendar_month</span></p>
-            <p><span class="material-symbols-outlined">notifications</span></p>
-            <p><span class="material-symbols-outlined">history</span></p>
+            <p><span class="material-symbols-outlined" id="BtnLogin" class="icone">person</span></p>
+
+            <p><span class="material-symbols-outlined" class="icone">calendar_month</span></p>
+
+            <p><span class="material-symbols-outlined" class="icone">notifications</span></p>
+
+            <p><span class="material-symbols-outlined" class="icone">history</span></p>
         </div>
         
-        <p><span class="material-symbols-outlined" id="btnAdd">add</span></p>
+        <p><span class="material-symbols-outlined icone" id="btnAdd">add</span></p>
     </nav>
+
 
     <div class="dinheiro">
         <p id="totalMen">Total mensal: R$ 0</p>
@@ -31,49 +36,50 @@
         <p id="pendente">Pendente: R$ 0</p>
     </div>
     
+
     <div class="contas">
         
     </div>
+
 
     <!-- Dialog -->
     <dialog id="modalConta">
         <form id="formConta">
             <h2>Adicionar Conta</h2>
             
-            <label>Nome da conta:</label>
-            <input type="text" id="nome" required>
+            <input type="text" id="nome" required placeholder="Nome da conta">
+
+            <input type="number" id="valor" step="0.01" required placeholder="Valor R$">
             
-            <label>Data de abertura:</label>
-            <input type="date" id="abertura" required>
+            <label for="abertura">Abertura</label>
+            <input type="date" id="abertura" required placeholder="Data de abertura">
             
-            <label>Data de vencimento:</label>
-            <input type="date" id="vencimento" required>
-            
-            <label>Valor:</label>
-            <input type="number" id="valor" step="0.01" required>
+            <label for="vencimento">Vencimento</label>
+            <input type="date" id="vencimento" required placeholder="Data de vencimento">
             
             <div>
-                <button type="submit">Salvar</button>
-                <button type="button" id="fechar">Cancelar</button>
+                <button type="submit" class="submit">Salvar</button>
+
+                <button type="button" id="fechar" class="cancel">Cancelar</button>
             </div>
         </form>
     </dialog>
 
+
     <dialog id="loginDialog">
         <form method="post">
-            <label for="login">Login:</label>
-            <input type="text">
+            <input type="text" placeholder="Insira o login" required>
 
             <br>
 
-            <label for="senha">Senha:</label>
-            <input type="password">
+            <input type="password" placeholder="Insira a senha" required>
 
             <br>
             
             <div >
-                <button type="submit">Enviar</button>
-                <button id="fecharLogin">Cancelar</button>
+                <button type="submit" class="submit">Enviar</button>
+
+                <button id="fecharLogin" class="cancel">Cancelar</button>
             </div>
         </form>
     </dialog>
@@ -81,5 +87,6 @@
 
     <script src="javascript/dialogAdd.js"></script>
     <script src="javascript/login.js"></script>
+    <script src="javascript/darkMode.js"></script>
 </body>
 </html>
