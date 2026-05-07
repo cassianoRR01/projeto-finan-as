@@ -84,7 +84,7 @@ nav {
 
 .contas {
     grid-area: 3 / 2 / -1 / -1;
-    background-color: white;
+    background-color: rgb(204, 204, 204);
 }
 
 .contas div {
@@ -126,8 +126,57 @@ dialog button {
     cursor: pointer;
 }
 
+#modalConta {
+    background-color: rgb(119, 119, 119);
+    width: 400px;
+    color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.452);
+}
+
+#loginDialog {
+    background-color: rgb(119, 119, 119);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.459);
+}
+
+#loginDialog button, #modalConta button {
+    width: 70px;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.452);
+}
+
+#modalConta button {
+    margin-top: 10px;
+}
+
+#loginDialog .cancel, #modalConta .cancel {
+    background-color: rgb(153, 28, 28) ;
+}
+
+#loginDialog .cancel:hover, #modalConta .cancel:hover {
+    background-color: rgb(197, 58, 58);
+}
+
+#loginDialog .submit, #modalConta .submit {
+    margin-right: 37px;
+    background-color: rgb(23, 100, 23);
+}
+
+#modalConta .submit {
+    margin-right: 215px;
+}
+
+#loginDialog .submit:hover, #modalConta .submit:hover {
+    background-color: rgb(5, 167, 5);
+}
+
+/*configurações do modo escuro*/
+
 .dark .contas {
-    background-color: black;
+    background-color: rgb(68, 68, 68);
 }
 
 .dark nav {
