@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/styleSpan.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Document</title>
@@ -47,16 +48,20 @@
         <form id="formConta">
             <h2>Adicionar Conta</h2>
             
-            <input type="text" id="nome" required placeholder="Nome da conta">
+            <input type="text" id="nome" class="campo" placeholder="Nome da conta">
+            <span class="spanForm" id="spanConta">Insira um Nome à Conta</span>
 
-            <input type="number" id="valor" step="0.01" required placeholder="Valor R$">
+            <input type="number" id="valor" class="campo" step="0.01" placeholder="Valor R$">
+            <span class="spanForm" id="spanConta">Insira um Valor à Conta</span>
             
             <label for="abertura">Abertura</label>
-            <input type="date" id="abertura" required placeholder="Data de abertura">
+            <input type="date" id="abertura" class="campo" placeholder="Data de abertura">
+            <span class="spanForm" id="spanConta">Data de Abertura Inválida</span>
             
             <label for="vencimento">Vencimento</label>
-            <input type="date" id="vencimento" required placeholder="Data de vencimento">
-            
+            <input type="date" id="vencimento" class="campo" placeholder="Data de vencimento">
+            <span class="spanForm" id="spanConta">Data de Vencimento Inválida</span>
+
             <div>
                 <button type="submit" class="submit">Salvar</button>
                 <button type="button" id="fechar" class="cancel">Cancelar</button>
@@ -85,7 +90,7 @@
 
     <p><span class="material-symbols-outlined icone" id="btnAdd">add</span></p>
     
-    <script src="javascript/dialogAdd.js"></script>
+    <script src="javascript/dialogAdd2.0.js"></script>
     <script src="javascript/login.js"></script>
     <script src="javascript/darkMode.js"></script>
 </body>
