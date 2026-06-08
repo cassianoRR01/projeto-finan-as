@@ -69,14 +69,13 @@ function valDataVenc(){
 let totalMensal = 0;
 let pendente = 0;
 let n_conta = 0;
+let pago = 0;
 
 formConta.addEventListener("submit", (e) => {
     e.preventDefault()
-
     
-
     // Campo do Formulário //
-
+    
     const nomeConta = document.getElementById('nome').value;
     const valorConta = parseFloat(document.getElementById('valor').value);
     const dataAbertura = document.getElementById('abertura').value;
@@ -104,6 +103,8 @@ formConta.addEventListener("submit", (e) => {
             return true;
         }
     }
+
+    
     
     // Variável que diz se o Formulário pode ser ou não enviado //
     const validacoes = [
@@ -144,7 +145,7 @@ formConta.addEventListener("submit", (e) => {
             <p>Abertura: ${dataAberFormatada}</p>
             <p>Vencimento: ${dataVencFormatada}</p>
             <p>Valor: R$ ${valorConta}</p>
-            <button onclick="${str}.remove()">Pago</button>
+            <button onclick="pagoConta(${valorConta}, '${str}')">Pago</button>
         `
         listaContas.appendChild(contaDiv)
 
@@ -157,3 +158,13 @@ formConta.addEventListener("submit", (e) => {
     }
     
 })
+
+function pagoConta(valorPago, idConta){
+    pago = pago + valorPago;
+    pendente = pendente - valorPago;
+
+    document.getElementById("pago").textContent = `Pago: R$ ${pago.toFixed(2)}`;
+    document.getElementById("pendente").textContent = `Pendente: R$ ${pendente.toFixed(2)}`;
+
+    document.getElementById(idConta).remove();
+}

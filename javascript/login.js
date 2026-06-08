@@ -3,11 +3,6 @@ const loginDialog = document.getElementById("loginDialog");
 
 const fecharLogin = document.getElementById('fecharLogin');
 
-BtnLogin.addEventListener("click", function() {
-    loginDialog.showModal();
-});
+BtnLogin.addEventListener("click", () => loginDialog.showModal())
 
-fecharLogin.addEventListener("click", function(event) {
-    event.preventDefault();
-    loginDialog.close();
-});
+fecharLogin.addEventListener("click", () => loginDialog.close())
