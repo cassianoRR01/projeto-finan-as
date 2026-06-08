@@ -11,7 +11,7 @@ body {
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template: 40px 55px 1fr / 50px 1fr;
+    grid-template: 50px 55px 1fr / 50px 1fr;
 }
 
 header {
