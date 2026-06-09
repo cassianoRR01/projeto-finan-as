@@ -5,3 +5,18 @@
     font-weight: bold;
     margin-top: -10px;
 }
+
+#formCadastro .spanForm {
+    display: none;
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: -1px;
+}
+
+.spanCadastro {
+    display: none;
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
