@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/styleHome.css">
+    <link rel="stylesheet" href="../estilos/styleHeader.css">
+    <link rel="stylesheet" href="../estilos/styleCadastro.css">
+    <link rel="stylesheet" href="../estilos/styleSpan.css">
+
+
     <link rel="shortcut icon" href="../favicon/icons8-dinheiro-16.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-    <link rel="stylesheet" href="../estilos/styleCadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../estilos/styleSpan.css">
     <title>Cadastro</title>
 </head>
 <body>
@@ -24,9 +27,9 @@
 
             <div id="links">
                 <p><a href="index.html">Home</a></p>
-                <p><a href="#">Sobre</a></p>
-                <p><a href="#">Entrar</a></p>
-                <p><a href="#">Cadastrar</a></p>
+                <p><a href="sobre.html">Sobre</a></p>
+                <p><a href="login.html">Entrar</a></p>
+                <p><a href="cadastro.html">Cadastrar</a></p>
                 <p><a href="financeiro.html">Finanças</a></p>
             </div>
 
@@ -40,7 +43,7 @@
 
     <main class="mainCadastro">
         <div class="containerCadastro">
-            <form action="" id="formCadastro">
+            <form id="formCadastro">
                 <h2>Cadastro</h2>
                 <input type="text" id="nomeCadastro" class="campo" placeholder="Nome">
                 <span class="spanForm">Insira um Nome válido</span>
@@ -52,10 +55,10 @@
                 <span class="spanForm">Insira uma Senha válida</span>
                 <input type="text" id="conSenhaCad" class="campo" placeholder="Confirmar Senha">
                 <span class="spanForm">As senhas precisam ser Iguais</span>
-                <input type="number" id="cpfCadastro" class="campo" placeholder="CPF">
+                <input type="text" id="cpfCadastro" class="campo" placeholder="CPF">
                 <span class="spanForm">Insira um CPF válido</span>
 
-                <input type="number" id="cepCadastro" class="campo" placeholder="CEP" onblur="consultaCEP()">
+                <input type="text" id="cepCadastro" class="campo" placeholder="CEP" onblur="consultaCEP()">
                 <span class="spanForm">Insira um CEP válido</span>
 
                 <input type="text" id="ruaCadastro" class="campo" placeholder="Rua">
@@ -65,7 +68,9 @@
                 <input type="text" id="ufCadastro" class="campo" placeholder="UF">
                 <input type="text" id="numCadastro" placeholder="Nº">
                 <input type="text" id="complementoCadastro" placeholder="Complemento"> <br>
+                
                 <button type="submit">Enviar</button>
+
                 <span class="spanCadastro" id="spanCadastro">Form Valido</span>
             </form>
         </div>

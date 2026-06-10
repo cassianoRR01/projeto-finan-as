@@ -120,6 +120,10 @@ nav {
     box-shadow: 0 8px 20px rgba(0,0,0,.1);
 }
 
+.home_fin_nav {
+    
+}
+
 #btnAdd {
     position: fixed;
     bottom: 25px;

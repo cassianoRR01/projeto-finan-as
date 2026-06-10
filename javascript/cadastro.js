@@ -165,13 +165,15 @@ function valCepCad(){
 }
 
 function salvarCad(){
-    const userCadastrados = JSON.parse(localStorage.getItem('userCadastrados') || '[]')
+    const userCadastrados = JSON.parse(localStorage.getItem('userCadastrados')) || [];
 
     const usuario = {
         nomeUser: nomeCad.value,
         emailUser: emailCad.value,
         senha: senhaCad.value,
         cpfUser: cpfCad.value,
+        contas: [],
+        historico: [],
         cepUser: cepCad.value,
         rua: ruaCad.value,
         bairro: bairroCad.value,
@@ -181,10 +183,22 @@ function salvarCad(){
         nº: numCad.value,
         complemento: complementoCad.value
     };
+    
+    const emailExiste = userCadastrados.some(usuario => usuario.emailUser === emailCad.value);
+
+    if(emailExiste){
+        setError(1);
+        spanConta[1].textContent = 'Email já Registrado';
+        return false;
+    }
+
+    tiraErro(1);
 
     userCadastrados.push(usuario);
 
-    localStorage.setItem("userCadastrados", JSON.stringify(userCadastrados));
+    localStorage.setItem('usuarios', JSON.stringify(userCadastrados));
+
+    return true;
 }
 
 formCad.addEventListener("submit", (e) => {
@@ -203,6 +217,6 @@ formCad.addEventListener("submit", (e) => {
     if(formCadValido){
         salvarCad();
         spanCad.style.display = 'block'
-        formCad.reset();
+        
     } 
 });

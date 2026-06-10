@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/styleHome.css">
+    <link rel="stylesheet" href="../estilos/styleLogin.css">
+    <link rel="stylesheet" href="../estilos/styleSpan.css">
     <link rel="stylesheet" href="../estilos/styleHeader.css">
 
     <link rel="shortcut icon" href="../favicon/icons8-dinheiro-16.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <title>ConFia</title>
+    <title>Document</title>
 </head>
 <body>
     <header>
@@ -38,39 +40,23 @@
 
     </header>
 
-    <main class="mainCadastro">
+    <main class="mainLogin">
+        <div class="containerLogin">
+            <form id="formLogin">
+                <h2>Login</h2>
+                <input type="text" class="campoLog" placeholder="Email" id="emailLogin">
+                <span class="spanLogin" id="spanLogin">Email não Encontrado</span>
+                <input type="text" class="campoLog" placeholder="Senha" id="senhaLogin"><br>
+                <span class="spanLogin" id="spanSenha">Senha Incorreta</span>
+                <button type="submit">Entrar</button>
+                <span class="spanLoginSucesso" id="spanLoginSucesso">Login Efetuado com Sucesso!</span>
+            </form>
 
-        <section>
+        </div>
 
-            <div id="titulo">
-
-                <p>ASSUMA O CONTROLE DO</p>
-                <p id="seuDinheiro">SEU DINHEIRO</p>
-
-            </div>
-
-            <p>Organize suas contas, acompanhe pagamentos e nunca mais seja surpreendido por uma dívida esquecida. Uma ferramente simples para quem deseja construir uma vida financeira mais tranquila.</p>
-
-            <button>
-
-                <a href="financeiro.html">
-                    <span class="material-symbols-outlined">attach_money</span>
-                    comece agora
-                </a>
-
-            </button>
-
-            <a href="sobre.html">Saiba mais</a>
-
-        </section>
-
-        <aside>
-
-            <img src="../imagens/imagem-dinheiro.png" alt="ilustração de notas e moedas">
-
-        </aside>
 
     </main>
 
+    <script src="../javascript/login.js"></script>
 </body>
 </html>

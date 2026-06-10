@@ -1,3 +1,99 @@
+// Verifa se o usuario está logado, caso não, ele é redirecionado a tela de login //
+const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
+
+if(!usuarioLogado){
+    window.location.href = 'login.html';
+}
+
+if(!usuarioLogado.contas){
+    usuarioLogado.contas = [];
+}
+
+if(!usuarioLogado.historico){
+    usuarioLogado.historico = [];
+}
+
+// Integração Login com a DialogLogin //
+const BtnLogin = document.getElementById("BtnLogin");
+const loginDialog = document.getElementById("loginDialog");
+const infoUsuario = document.getElementById('infoUsuario')
+const fecharLogin = document.getElementById('fecharLogin');
+
+BtnLogin.addEventListener("click", () => {
+    infoUsuario.innerHTML = `
+    <h2>Bem Vindo(a), ${usuarioLogado.nomeUser}</h2>
+    <p>Email: ${usuarioLogado.emailUser}</p>
+    `;
+
+    loginDialog.showModal();
+})
+
+fecharLogin.addEventListener("click", (e) =>{
+    e.preventDefault(); loginDialog.close()
+});
+
+// Logout //
+const btnLogout = document.getElementById('logoutBtn')
+btnLogout.addEventListener('click', () => {
+    localStorage.removeItem('usuarioLogado');
+    window.location.href = 'login.html'
+});
+
+// Historico de pagamentos //
+const btnHis = document.getElementById('btnHistorico')
+const modalHis = document.getElementById('dialogHistorico')
+const fecharHis = document.getElementById('fecharHis')
+
+btnHis.addEventListener("click", (e) => {
+    e.preventDefault();
+    modalHis.showModal();
+})
+
+fecharHis.addEventListener("click", (e) => {
+    e.preventDefault();
+    modalHis.close();
+})
+
+
+// Salvar as paradas no Usuario //
+function salvarUsuario(){
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+    const indice = usuarios.findIndex(usuario => usuario.emailUser === usuarioLogado.emailUser);
+
+    usuarios[indice] = usuarioLogado;
+
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+}
+
+// Variáveis Totalizadoras //
+let totalMensal = 0;
+let pendente = 0;
+let pago = 0;
+
+function atualizarTotais(){
+
+    totalMensal = 0;
+    pendente = 0;
+    pago = 0;
+
+    usuarioLogado.contas.forEach(conta =>{
+        totalMensal = totalMensal + conta.valor;
+
+        if(conta.status === "pago"){
+            pago = pago + conta.valor;
+        } else {
+            pendente = pendente + conta.valor
+        }
+    });
+
+    document.getElementById('totalMen').textContent = `Total Mensal: R$ ${totalMensal.toFixed(2)}`
+    document.getElementById('pago').textContent = `Pago: R$ ${pago.toFixed(2)}`
+    document.getElementById('pendente').textContent = `Pendente: R$ ${pendente.toFixed(2)}`
+}
+
+
 const btnAdd = document.getElementById('btnAdd');
 const modalConta = document.getElementById('modalConta');
 const fechar = document.getElementById('fechar');
@@ -5,6 +101,49 @@ const formConta = document.getElementById('formConta');
 
 btnAdd.addEventListener("click", () => modalConta.showModal());
 fechar.addEventListener("click", () =>{modalConta.close(),formConta.reset()});
+
+// Function que carrega todas as contas quando recarrega a pagina //
+function carregarContas(){
+
+    document.querySelector('.contas').innerHTML = '';
+
+    usuarioLogado.contas.forEach(conta => {
+        exibirContaTela(conta);
+    });
+
+    atualizarTotais();
+}
+
+carregarContas();
+
+// Exibir as contas na tela //
+function exibirContaTela(conta){
+    
+    const listaContas = document.querySelector('.contas');
+
+    const contaDiv = document.createElement('div');
+    contaDiv.id = conta.id
+
+    // Formatar Data // 
+    const [anoAbertura, mesAbertura, diaAbertura] = conta.abertura.split("-");
+    const [anoVencimento, mesVencimento, diaVencimento] =conta.vencimento.split("-");
+
+    const dataAberFormatada = `${diaAbertura}/${mesAbertura}/${anoAbertura}`;
+    const dataVencFormatada = `${diaVencimento}/${mesVencimento}/${anoVencimento}`;
+
+    contaDiv.innerHTML = `
+        <h3>${conta.nome}</h3>
+        <p>Abertura: ${dataAberFormatada}</p>
+        <p>Vencimento: ${dataVencFormatada}</p>
+        <p>Valor: R$ ${conta.valor.toFixed(2)}</p>
+        ${
+            conta.status === 'pendente'?
+            `<button onclick="pagoConta(${conta.id})">Pago</button>`:`<p>✓Pago</p>`
+        }
+    `;
+
+    listaContas.appendChild(contaDiv)
+}
 
 // Mensagem de Erro //
 
@@ -65,11 +204,35 @@ function valDataVenc(){
     }
 }
 
-// Variáveis Totalizadoras (Temporário) //
-let totalMensal = 0;
-let pendente = 0;
-let n_conta = 0;
-let pago = 0;
+function exibirHistoricoTela(conta){
+    const historicoDiv = document.querySelector('.historico');
+    const item = document.createElement('div');
+    item.classList.add('itemHistorico');
+
+    const [anoA, mesA, diaA] = conta.abertura.split('-')
+    const [anoV, mesV, diaV] = conta.vencimento.split('-')
+
+    item.innerHTML = `
+        <h3>${conta.nome}</h3>
+        <p>Valor: R$ ${conta.valor.toFixed(2)}</p>
+        <p>Abertura: ${diaA}/${mesA}/${anoA}</p>
+        <p>Vencimento: ${diaV}/${mesV}/${anoV}</p>
+        <p>Pagamento: ${conta.dataPagamento}</p>
+    `;
+
+    historicoDiv.appendChild(item);
+}
+
+function carregarHistorico(){
+    document.querySelector('.historico').innerHTML = '';
+
+    usuarioLogado.historico.forEach(conta =>{
+        exibirHistoricoTela(conta);
+    });
+}
+
+
+
 
 formConta.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -120,51 +283,47 @@ formConta.addEventListener("submit", (e) => {
     console.log(formValido)
     if(formValido){
 
+        const novaConta = {
+            id: Date.now(),
+            nome: nomeConta,
+            valor: valorConta,
+            abertura: dataAbertura,
+            vencimento: dataVencimento,
+            status: 'pendente'
+        };
+
+        usuarioLogado.contas.push(novaConta);
+
+        salvarUsuario();
+        exibirContaTela(novaConta);
+        atualizarTotais();
         modalConta.close();
         formConta.reset();
-
-        //- Exibir na Tela -// 
-
-        n_conta = n_conta + 1;
-        let str = 'conta' + n_conta;
-
-        // Formatar Data // 
-        const [anoAbertura, mesAbertura, diaAbertura] = dataAbertura.split("-");
-        const [anoVencimento, mesVencimento, diaVencimento] = dataVencimento.split("-");
-
-        const dataAberFormatada = `${diaAbertura}/${mesAbertura}/${anoAbertura}`;
-        const dataVencFormatada = `${diaVencimento}/${mesVencimento}/${anoVencimento}`;
-
-        const listaContas = document.querySelector('.contas');
-
-        const contaDiv = document.createElement('div');
-        contaDiv.setAttribute('id', `${str}`);
-
-        contaDiv.innerHTML = `
-            <h3>${nomeConta}</h3>
-            <p>Abertura: ${dataAberFormatada}</p>
-            <p>Vencimento: ${dataVencFormatada}</p>
-            <p>Valor: R$ ${valorConta}</p>
-            <button onclick="pagoConta(${valorConta}, '${str}')">Pago</button>
-        `
-        listaContas.appendChild(contaDiv)
-
-        totalMensal = totalMensal + valorConta;
-        pendente = pendente + valorConta;
-        
-        // Atualizar Total e Pendente na Tela //
-        document.getElementById('totalMen').textContent = `Total Mensal: R$ ${totalMensal.toFixed(2)}`
-        document.getElementById('pendente').textContent = `Pendente: R$ ${pendente.toFixed(2)}`
     }
     
 })
 
-function pagoConta(valorPago, idConta){
-    pago = pago + valorPago;
-    pendente = pendente - valorPago;
+function pagoConta(idConta){
+    const indiceConta = usuarioLogado.contas.findIndex(conta => conta.id === idConta);
 
-    document.getElementById("pago").textContent = `Pago: R$ ${pago.toFixed(2)}`;
-    document.getElementById("pendente").textContent = `Pendente: R$ ${pendente.toFixed(2)}`;
+    if(indiceConta === -1){
+        return;
+    }
 
-    document.getElementById(idConta).remove();
+    const conta = usuarioLogado.contas[indiceConta];
+
+    const contaHistorico = {
+        ...conta,
+        dataPagamento: new Date().toLocaleDateString('pt-br')
+    };
+
+    usuarioLogado.historico.push(contaHistorico);
+    usuarioLogado.contas.splice(indiceConta, 1);
+
+    salvarUsuario();
+    carregarContas();
+    carregarHistorico();
 }
+
+carregarContas();
+carregarHistorico();

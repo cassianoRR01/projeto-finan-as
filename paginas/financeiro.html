@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/styleFin.css">
     <link rel="stylesheet" href="../estilos/styleSpan.css">
+    
     <link rel="shortcut icon" href="../favicon/icons8-dinheiro-16.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,7 +14,7 @@
 <body>
     <header>
 
-        <p><a href="index.html">Home</a></p>
+        <p class="home_fin_nav"><a href="index.html">Home</a></p>
 
         <span class="material-symbols-outlined" id="btnDarkMode">dark_mode</span>
 
@@ -28,7 +29,7 @@
 
             <p><span class="material-symbols-outlined" class="icone">notifications</span></p>
 
-            <p><span class="material-symbols-outlined" class="icone">history</span></p>
+            <p><span class="material-symbols-outlined" class="icone" id="btnHistorico">history</span></p>
         </div>
         
     </nav>
@@ -36,7 +37,7 @@
 
     <div class="dinheiro">
         <p id="totalMen">Total mensal: R$ 0</p>
-
+        
         <p id="pago">Pago: R$ 0</p>
 
         <p id="pendente">Pendente: R$ 0</p>
@@ -76,27 +77,38 @@
 
 
     <dialog id="loginDialog">
-        <form method="post">
-            <input type="text" placeholder="Insira o login" required>
+        <form>
+            <div id="infoUsuario">
+
+            </div>
+            
 
             <br>
 
-            <input type="password" placeholder="Insira a senha" required>
+            
 
             <br>
             
-            <div >
-                <button type="submit" class="submit">Enviar</button>
 
-                <button id="fecharLogin" class="cancel">Cancelar</button>
+            <div>
+                <button style="color: black;" id="logoutBtn">Logout</button>
+                <button style="color: black;" id="fecharLogin">Fechar</button>
             </div>
         </form>
+    </dialog>
+
+    <dialog id="dialogHistorico">
+        <h2>Histórico de Pagamentos</h2>
+
+        <div class="historico" id="historico">
+
+        </div>
+        <button id="fecharHis">Fechar</button>
     </dialog>
 
     <p><span class="material-symbols-outlined icone" id="btnAdd">add</span></p>
     
     <script src="../javascript/dialogAdd2.0.js"></script>
-    <script src="../javascript/login.js"></script>
     <script src="../javascript/darkMode.js"></script>
 </body>
 </html>
