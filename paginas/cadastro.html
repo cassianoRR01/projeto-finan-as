@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../estilos/styleHome.css">
-    <link rel="stylesheet" href="../estilos/styleHeader.css">
     <link rel="stylesheet" href="../estilos/styleCadastro.css">
+    <link rel="stylesheet" href="../estilos/styleHeader.css">
     <link rel="stylesheet" href="../estilos/styleSpan.css">
-
-
     <link rel="shortcut icon" href="../favicon/icons8-dinheiro-16.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <title>Cadastro</title>
+    <title>ConFia</title>
 </head>
 <body>
     <header>
@@ -42,39 +39,87 @@
     </header>
 
     <main class="mainCadastro">
-        <div class="containerCadastro">
+
+        <section id="texto">
+
+            <div>
+                <p>CADASTRE-SE <p class="verde">AGORA</p></p>
+            </div>
+
+            <p>E admnistre o seu dinheiro</p>
+
+        </section>
+
+        <section id="containerCadastro">
+
             <form id="formCadastro">
-                <h2>Cadastro</h2>
-                <input type="text" id="nomeCadastro" class="campo" placeholder="Nome">
-                <span class="spanForm">Insira um Nome válido</span>
 
-                <input type="text" id="emailCadastro" class="campo" placeholder="Email">
-                <span class="spanForm">Insira um Email válido</span>
+                <div class="campoForm">
+                    <input type="text" id="nomeCadastro" class="campo" placeholder="Nome">
+                    <span class="spanForm">Insira um nome válido</span>
+                </div>
 
-                <input type="text" id="senhaCad" class="campo" placeholder="Senha">
-                <span class="spanForm">Insira uma Senha válida</span>
-                <input type="text" id="conSenhaCad" class="campo" placeholder="Confirmar Senha">
-                <span class="spanForm">As senhas precisam ser Iguais</span>
-                <input type="text" id="cpfCadastro" class="campo" placeholder="CPF">
-                <span class="spanForm">Insira um CPF válido</span>
+                <div class="campoForm">
+                    <input type="text" id="emailCadastro" class="campo" placeholder="E-mail">
+                    <span class="spanForm">Insira um e-mail válido</span>
+                </div>
 
-                <input type="text" id="cepCadastro" class="campo" placeholder="CEP" onblur="consultaCEP()">
-                <span class="spanForm">Insira um CEP válido</span>
+                <div class="campoForm">
+                    <input type="password" id="senhaCad" class="campo" placeholder="Senha">
+                    <span class="spanForm">Insira uma senha</span>
+                </div>
 
-                <input type="text" id="ruaCadastro" class="campo" placeholder="Rua">
-                <input type="text" id="bairroCadastro" class="campo" placeholder="Bairro">
-                <input type="text" id="cidadeCadastro" class="campo" placeholder="Cidade">
-                <input type="text" id="estadoCadastro" class="campo" placeholder="Estado">
-                <input type="text" id="ufCadastro" class="campo" placeholder="UF">
-                <input type="text" id="numCadastro" placeholder="Nº">
-                <input type="text" id="complementoCadastro" placeholder="Complemento"> <br>
-                
+                <div class="campoForm">
+                    <input type="password" id="conSenhaCad" class="campo" placeholder="Confirmar senha">
+                    <span class="spanForm">As senhas precisam ser iguais</span>
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="cpfCadastro" class="campo" placeholder="CPF">
+                    <span class="spanForm">Insira um CPF válido</span>
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="cepCadastro" class="campo" placeholder="CEP" onblur="consultaCEP()">
+                    <span class="spanForm">Insira um CEP válido</span>
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="ruaCadastro" class="campo" placeholder="Rua">
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="bairroCadastro" class="campo" placeholder="Bairro">
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="cidadeCadastro" class="campo" placeholder="Cidade">
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="estadoCadastro" class="campo" placeholder="Estado">
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="ufCadastro" class="campo" placeholder="UF">
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="numCadastro" class="campo" placeholder="Nº">
+                </div>
+
+                <div class="campoForm">
+                    <input type="text" id="complementoCadastro" class="campo" placeholder="Complemento">
+                </div>
+
                 <button type="submit">Enviar</button>
 
-                <span class="spanCadastro" id="spanCadastro">Form Valido</span>
-            </form>
-        </div>
+                <span class="spanCadastro" id="spanCadastro">
+                    Formulário válido
+                </span>
 
+            </form>
+        </section>
 
     </main>
 

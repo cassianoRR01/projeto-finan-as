@@ -48,7 +48,7 @@ const campo = document.querySelectorAll('.campo')
 
 function setError(index){
     campo[index].style.border = '2px solid red';
-    spanConta[index].style.display = 'block';
+    spanConta[index].style.display = 'inline-block';
 }
 
 function tiraErro(index){
@@ -216,7 +216,7 @@ formCad.addEventListener("submit", (e) => {
 
     if(formCadValido){
         salvarCad();
-        spanCad.style.display = 'block'
+        spanCad.style.display = 'inline-block'
         
     } 
 });
