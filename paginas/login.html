@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../favicon/icons8-dinheiro-16.png" type="image/x-icon">
-    <link rel="stylesheet" href="../estilos/styleHome.css">
     <link rel="stylesheet" href="../estilos/styleLogin.css">
     <link rel="stylesheet" href="../estilos/styleSpan.css">
     <link rel="stylesheet" href="../estilos/styleHeader.css">
@@ -40,20 +39,28 @@
 
     </header>
 
-    <main class="mainLogin">
-        <div class="containerLogin">
+    <main>
+
+            <div id="texto">
+
+                <p>SEJA <p class="verde">BEM VINDO</p></p>
+
+            </div>
+
             <form id="formLogin">
+
                 <h2>Login</h2>
+
                 <input type="text" class="campoLog" placeholder="Email" id="emailLogin">
                 <span class="spanLogin" id="spanLogin">Email não Encontrado</span>
-                <input type="text" class="campoLog" placeholder="Senha" id="senhaLogin"><br>
+
+                <input type="text" class="campoLog" placeholder="Senha" id="senhaLogin">
                 <span class="spanLogin" id="spanSenha">Senha Incorreta</span>
+                
                 <button type="submit">Entrar</button>
                 <span class="spanLoginSucesso" id="spanLoginSucesso">Login Efetuado com Sucesso!</span>
+
             </form>
-
-        </div>
-
 
     </main>
 
