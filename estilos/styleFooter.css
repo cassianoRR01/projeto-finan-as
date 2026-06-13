@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+footer {
+    background: linear-gradient(90deg,#16a34a,#22c55e);
+    margin-top: 20px;
+    height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+}
+
+div.tituloFooter p {
+    display: inline;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+p.verde2 {
+    color: #46eb83
+}
+
+div.devs {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+div.devs p {
+    font-size: .8rem;
+}
+
+p.nome {
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+div.devs a {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+div.devs a:hover {
+    text-decoration: underline;
+}
+

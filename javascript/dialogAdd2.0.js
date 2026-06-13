@@ -142,7 +142,8 @@ function exibirContaTela(conta){
     const listaContas = document.querySelector('.contas');
 
     const contaDiv = document.createElement('div');
-    contaDiv.id = conta.id
+    contaDiv.classList.add('conta');
+    contaDiv.id = conta.id;
 
     // Formatar Data // 
     const [anoAbertura, mesAbertura, diaAbertura] = conta.abertura.split("-");

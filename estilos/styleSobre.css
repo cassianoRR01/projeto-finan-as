@@ -135,3 +135,66 @@ section h3 {
 section h3 p {
     display: inline;
 }
+
+/*configurações do darkmode*/
+
+body.dark{
+    background-color: #111827;
+    color: #f9fafb;
+}
+
+body.dark main {
+    background-color: #111827;
+}
+
+body.dark .titulo {
+    box-shadow:
+        inset 0px 0px 20px rgba(0,0,0,.8),
+        0px 0px 20px rgba(34,197,94,.08);
+}
+
+body.dark .titulo p {
+    color: #f9fafb;
+}
+
+body.dark .titulo .verde {
+    color: #22c55e;
+}
+
+body.dark section {
+    background-color: #1f2937;
+    border: 1px solid #374151;
+    color: #d1d5db;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25);
+}
+
+body.dark section h3 {
+    color: #f9fafb;
+    border-bottom: 2px solid #22c55e;
+}
+
+body.dark .verde {
+    color: #22c55e;
+}
+
+body.dark section {
+    transition: .3s;
+}
+
+body.dark section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0,0,0,.35);
+}
+
+body.dark::-webkit-scrollbar {
+    width: 10px;
+}
+
+body.dark::-webkit-scrollbar-track {
+    background: #111827;
+}
+
+body.dark::-webkit-scrollbar-thumb {
+    background: #22c55e;
+    border-radius: 20px;
+}

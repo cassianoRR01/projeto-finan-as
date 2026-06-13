@@ -65,16 +65,17 @@ body {
 
 .conteudoFinanceiro {
     height: calc(100vh - 120px);
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.contas {
-    
-}
-
 .semContas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     color: #64748b;
 }
@@ -113,6 +114,299 @@ body {
 
 #btnAdd:hover {
     transform: scale(1.1) rotate(90deg);   
+}
+
+/* =========================
+   DIALOGS
+========================= */
+
+dialog {
+    border: none;
+    border-radius: 20px;
+    padding: 25px;
+    width: 90%;
+    max-width: 450px;
+    background: white;
+    color: #222;
+    box-shadow: 0 20px 40px rgba(0,0,0,.15);
+    animation: abrirModal .25s ease;
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(6px);
+    background: rgba(0,0,0,.25);
+}
+
+/* Centralização */
+
+dialog[open] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Animação */
+
+@keyframes abrirModal {
+    from{
+        opacity: 0;
+        transform: translateY(-20px) scale(.95);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+dialog {
+    margin: auto;
+}
+
+/*formulario add conta*/
+
+#modalConta form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#modalConta h2 {
+    text-align: center;
+    color: #16a34a;
+    margin-bottom: 10px;
+}
+
+#modalConta input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    outline: none;
+    transition: .3s;
+}
+
+#modalConta input:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34,197,94,.15);
+}
+
+#modalConta label {
+    font-weight: 600;
+    color: #475569;
+}
+
+#modalConta div:last-child {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Botões */
+
+.submit,.cancel {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.submit {
+    background: #22c55e;
+    color: white;
+}
+
+.submit:hover {
+    background: #16a34a;
+}
+
+.cancel {
+    background: #e5e7eb;
+}
+
+.cancel:hover {
+    background: #d1d5db;
+}
+
+/*dialog login*/
+
+#loginDialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#infoUsuario {
+    text-align: center;
+}
+
+#infoUsuario h2 {
+    color: #16a34a;
+    margin-bottom: 10px;
+}
+
+#infoUsuario p {
+    color: #64748b;
+}
+
+#loginDialog div:last-child {
+    display: flex;
+    gap: 10px;
+}
+
+#loginDialog button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#logoutBtn {
+    background: #ef4444;
+    color: white !important;
+}
+
+#logoutBtn:hover {
+    background: #dc2626;
+}
+
+#fecharLogin {
+    background: #e5e7eb;
+}
+
+/*dialog historico*/
+
+#dialogHistorico {
+    max-width: 650px;
+    width: 95%;
+}
+
+#dialogHistorico h2 {
+    text-align: center;
+    color: #16a34a;
+    margin-bottom: 20px;
+}
+
+.historico {
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Card do histórico */
+
+.itemHistorico {
+    padding: 15px;
+    border-radius: 15px;
+    background: #f8fafc;
+    border-left: 5px solid #22c55e;
+}
+
+.itemHistorico h3 {
+    color: #16a34a;
+    margin-bottom: 10px;
+}
+
+.itemHistorico p {
+    margin: 5px 0;
+    color: #475569;
+}
+
+#fecharHis {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #22c55e;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#fecharHis:hover {
+    background: #16a34a;
+}
+
+.contas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.conta {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    border-left: 6px solid #22c55e;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    transition: .3s;
+}
+
+.conta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0,0,0,.12);
+}
+
+.conta h3 {
+    color: #16a34a;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.conta p {
+    margin: 8px 0;
+    color: #475569;
+    font-size: .95rem;
+}
+
+.conta p:nth-of-type(3) {
+    margin-top: 15px;
+    font-weight: 700;
+    color: #111827;
+    font-size: 1.05rem;
+}
+
+.conta button {
+    width: 100%;
+    margin-top: 18px;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    background: linear-gradient(135deg,#22c55e,#16a34a);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.conta button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 15px rgba(34,197,94,.35);
+}
+
+.contas::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contas::-webkit-scrollbar-thumb {
+    background: #22c55e;
+    border-radius: 20px;
 }
 
 /*condigurações do dark mode*/
@@ -222,4 +516,38 @@ body.dark #logo {
 body.dark #btnDark {
     background: rgba(255,255,255,.15);
     color: white;
+}
+
+body.dark dialog {
+    background: #1f2937;
+    color: white;
+}
+
+body.dark dialog::backdrop {
+    background: rgba(0,0,0,.45);
+}
+
+body.dark #modalConta input {
+    background: #374151;
+    color: white;
+    border: 1px solid #4b5563;
+}
+
+body.dark #modalConta label {
+    color: #d1d5db;
+}
+
+body.dark .cancel,
+body.dark #fecharLogin {
+    background: #374151;
+    color: white;
+}
+
+body.dark .itemHistorico {
+    background: #111827;
+    border-left: 5px solid #22c55e;
+}
+
+body.dark .itemHistorico p {
+    color: #d1d5db;
 }
