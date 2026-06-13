@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../favicon/icons8-dinheiro-16.png" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/styleLogin.css">
-    <link rel="stylesheet" href="../estilos/styleSpan.css">
     <link rel="stylesheet" href="../estilos/styleHeader.css">
     <link rel="shortcut icon" href="../favicon/icons8-dinheiro-16.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
@@ -43,22 +42,41 @@
 
             <div id="texto">
 
-                <p>SEJA <p class="verde">BEM VINDO</p></p>
+                <div id="titulo">
+                    <p>SEJA <p class="verde">BEM VINDO(A)</p></p>
+                </div>
+
+                <p>Faça o seu login ao lado</p>
+
+                <img src="../imagens/ilustração-login.webp" alt="máquina de cartão com moedas e notas fiscais.">
 
             </div>
 
             <form id="formLogin">
 
-                <h2>Login</h2>
+                <div class="areaInput">
 
-                <input type="text" class="campoLog" placeholder="Email" id="emailLogin">
-                <span class="spanLogin" id="spanLogin">Email não Encontrado</span>
+                    <input type="text" class="campoLog" placeholder="e-mail" id="emailLogin" autocomplete="email">
 
-                <input type="text" class="campoLog" placeholder="Senha" id="senhaLogin">
-                <span class="spanLogin" id="spanSenha">Senha Incorreta</span>
+                    <span class="spanLogin" id="spanLogin">E-mail não Encontrado</span>
+
+                </div>
+
+                <div class="areaInput">
+
+                    <input type="password" class="campoLog" placeholder="senha" id="senhaLogin">
+
+                    <span class="spanLogin" id="spanSenha">Senha incorreta</span>
+
+                </div>
                 
                 <button type="submit">Entrar</button>
-                <span class="spanLoginSucesso" id="spanLoginSucesso">Login Efetuado com Sucesso!</span>
+                
+                <span class="spanLoginSucesso" id="spanLoginSucesso">Login efetuado com sucesso!</span>
+
+                <a href="cadastro.html">
+                    <p>Criar conta</p>
+                </a>
 
             </form>
 

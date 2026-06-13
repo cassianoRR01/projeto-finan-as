@@ -14,7 +14,7 @@ if(!usuarioLogado.historico){
 }
 
 // Integração Login com a DialogLogin //
-const BtnLogin = document.getElementById("BtnLogin");
+const BtnLogin = document.getElementById("btnLogin");
 const loginDialog = document.getElementById("loginDialog");
 const infoUsuario = document.getElementById('infoUsuario')
 const fecharLogin = document.getElementById('fecharLogin');
@@ -78,19 +78,26 @@ function atualizarTotais(){
     pendente = 0;
     pago = 0;
 
-    usuarioLogado.contas.forEach(conta =>{
-        totalMensal = totalMensal + conta.valor;
-
-        if(conta.status === "pago"){
-            pago = pago + conta.valor;
-        } else {
-            pendente = pendente + conta.valor
-        }
+    // Soma as contas pendentes
+    usuarioLogado.contas.forEach(conta => {
+        totalMensal += conta.valor;
+        pendente += conta.valor;
     });
 
-    document.getElementById('totalMen').textContent = `Total Mensal: R$ ${totalMensal.toFixed(2)}`
-    document.getElementById('pago').textContent = `Pago: R$ ${pago.toFixed(2)}`
-    document.getElementById('pendente').textContent = `Pendente: R$ ${pendente.toFixed(2)}`
+    // Soma as contas já pagas
+    usuarioLogado.historico.forEach(conta => {
+        totalMensal += conta.valor;
+        pago += conta.valor;
+    });
+
+    document.getElementById('totalMen').textContent =
+        `R$ ${totalMensal.toFixed(2)}`;
+
+    document.getElementById('pago').textContent =
+        `R$ ${pago.toFixed(2)}`;
+
+    document.getElementById('pendente').textContent =
+        `R$ ${pendente.toFixed(2)}`;
 }
 
 
@@ -98,8 +105,20 @@ const btnAdd = document.getElementById('btnAdd');
 const modalConta = document.getElementById('modalConta');
 const fechar = document.getElementById('fechar');
 const formConta = document.getElementById('formConta');
+const fundoContas = document.querySelector(".semContas");
 
-btnAdd.addEventListener("click", () => modalConta.showModal());
+btnAdd.addEventListener("click", function() {
+    modalConta.showModal();
+});
+
+function atualizarMensagemSemContas() {
+    if (usuarioLogado.contas.length === 0) {
+        fundoContas.style.display = "block";
+    } else {
+        fundoContas.style.display = "none";
+    }
+}
+
 fechar.addEventListener("click", () =>{modalConta.close(),formConta.reset()});
 
 // Function que carrega todas as contas quando recarrega a pagina //
@@ -111,6 +130,7 @@ function carregarContas(){
         exibirContaTela(conta);
     });
 
+    atualizarMensagemSemContas();
     atualizarTotais();
 }
 
@@ -267,8 +287,8 @@ formConta.addEventListener("submit", (e) => {
         }
     }
 
-    
-    
+
+
     // Variável que diz se o Formulário pode ser ou não enviado //
     const validacoes = [
     valNome(),
@@ -296,6 +316,7 @@ formConta.addEventListener("submit", (e) => {
 
         salvarUsuario();
         exibirContaTela(novaConta);
+        atualizarMensagemSemContas();
         atualizarTotais();
         modalConta.close();
         formConta.reset();
@@ -304,7 +325,10 @@ formConta.addEventListener("submit", (e) => {
 })
 
 function pagoConta(idConta){
-    const indiceConta = usuarioLogado.contas.findIndex(conta => conta.id === idConta);
+
+    const indiceConta = usuarioLogado.contas.findIndex(
+        conta => conta.id === idConta
+    );
 
     if(indiceConta === -1){
         return;
@@ -314,15 +338,20 @@ function pagoConta(idConta){
 
     const contaHistorico = {
         ...conta,
-        dataPagamento: new Date().toLocaleDateString('pt-br')
+        dataPagamento: new Date().toLocaleDateString('pt-BR')
     };
 
+    // Salva no histórico
     usuarioLogado.historico.push(contaHistorico);
+
+    // Remove da lista de contas
     usuarioLogado.contas.splice(indiceConta, 1);
 
     salvarUsuario();
+
     carregarContas();
     carregarHistorico();
+    atualizarTotais();
 }
 
 carregarContas();

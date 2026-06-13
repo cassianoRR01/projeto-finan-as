@@ -1,267 +1,225 @@
-@charset "UTF-8";
-
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-header {
-    margin-bottom: 30px;
-}
-
 body {
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    grid-template: 50px 55px 1fr / 50px 1fr;
+    overflow-x: hidden;
 }
 
-header {
-    grid-area: 1 / 1 / 2 / -1;
-    background: linear-gradient(90deg,#16a34a,#22c55e);
-    box-shadow: 0 3px 10px rgba(0,0,0,.15);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 10px;
-}
-
-header span {
-    color: white;
-}
-
-nav {
-    grid-area: 2 / 1 / -1 / 2;
+.sidebar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 70px;
+    height: calc(100vh - 50px);
     background: white;
-    border-right: 1px solid #e6e6e6;
-    color: white;
+    border-right: 1px solid #e5e7eb;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 0px;
-    box-shadow: 2px 0 10px rgba(0,0,0,.05);
+    padding-top: 20px;
+    gap: 25px;
 }
 
-#btnDarkMode {
+.menuIcon {
     cursor: pointer;
-    transition: 0.3s;
-    background-color: rgba(255,255,255,.2);
-    backdrop-filter: blur(10px);
-    padding: 8px;
-    border-radius: 50%;
-}
-
-#btnDarkMode:hover {
-    transform: scale(1.1) rotate(15deg);
-}
-
-.icones {
-    padding-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    color:  black;
-}
-
-.icones p {
-    padding-top: 5px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.icones span{
+    color: #666;
     padding: 10px;
     border-radius: 12px;
     transition: .3s;
 }
 
-.icones span:hover{
+.menuIcon:hover {
     background: #dcfce7;
     color: #16a34a;
-    transform: scale(1.1);
 }
 
-.icones p:hover {
-    color: rgb(4, 133, 4);
-    font-weight: bolder;
-    cursor: pointer;
-    transition: 0.3s;
+.menuIcon.ativo {
+    background: #dcfce7;
+    color: #16a34a;
 }
 
-.dinheiro {
-    grid-area: 2 / 2 / 3 / -1;
-    background: white;
-    color: #333;
+.dashboard {
+    margin-left: 70px;
+    min-height: calc(100vh - 50px);
+}
+
+.resumo {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-evenly;
-    font-weight: 600;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 15px;
+}
+
+.cardResumo {
+    text-align: center;
+}
+
+.cardResumo h4 {
+    color: #666;
+    font-size: .9rem;
+    margin-bottom: 5px;
+}
+
+.cardResumo p {
+    font-weight: 700;
+    color: #222;
+}
+
+.conteudoFinanceiro {
+    height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contas {
-    grid-area: 3 / 2 / -1 / -1;
-    background: #f4f7fb;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-.contas div {
-    background: white;
-    margin-bottom: 15px;
-    padding: 18px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,.06);
-    transition: .3s;
-}
-
-.contas div:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,.1);
-}
-
-.home_fin_nav {
     
+}
+
+.semContas {
+    text-align: center;
+    color: #64748b;
+}
+
+.semContas span {
+    font-size: 5rem;
+    color: #22c55e;
+}
+
+.semContas h2 {
+    margin: 15px 0;
+    color: #334155;
+}
+
+.semContas p {
+    font-size: 1rem;
 }
 
 #btnAdd {
     position: fixed;
-    bottom: 25px;
     right: 25px;
+    bottom: 25px;
     width: 60px;
     height: 60px;
-    background: #22c55e;
-    color: white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    background: linear-gradient(135deg,#22c55e,#16a34a);
+    color: white;
+    font-size: 2rem;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    box-shadow: 0 8px 20px rgba(34,197,94,.4);
     transition: .3s;
-
 }
 
 #btnAdd:hover {
-    transform: scale(1.1) rotate(90deg);
+    transform: scale(1.1) rotate(90deg);   
 }
 
-dialog {
-    padding: 20px;
-    border-radius: 10px;
-    border: none;
-    margin: auto;
+/*condigurações do dark mode*/
+
+body.dark {
+    background: #111827;
+    color: #f9fafb;
 }
 
-dialog form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+body.dark header {
+    box-shadow: 0 5px 20px rgba(0,0,0,.5);
 }
 
-dialog input{
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    outline: none;
+body.dark .sidebar {
+    background-color: #1f2937;
+    border-right: 1px solid #374151;
 }
 
-dialog input:focus{
+body.dark .menuIcon {
+    color: #d1d5db;
+}
+
+body.dark .menuIcon:hover {
+    background-color: #374151;
+    color: #22c55e;
+}
+
+body.dark .menuIcon.ativo {
+    background-color: rgba(34,197,94,.2);
+    color: #22c55e;
+}
+
+body.dark .dashboard {
+    background-color: #111827;
+}
+
+body.dark .resumo {
+    background-color: #1f2937;
+    border-bottom: 1px solid #374151;
+}
+
+body.dark .cardResumo h4 {
+    color: #9ca3af;
+}
+
+body.dark .cardResumo p {
+    color: #f9fafb;
+}
+
+body.dark .conteudoFinanceiro {
+    background-color: #111827;
+}
+
+body.dark .semContas h2 {
+    color: #f9fafb;
+}
+
+body.dark .semContas p {
+    color: #9ca3af;
+}
+
+body.dark .conta {
+    background-color: #1f2937;
+    border: 1px solid #374151;
+    color: white;
+}
+
+body.dark .conta:hover {
     border-color: #22c55e;
 }
 
-dialog button {
-    padding: 5px;
-    cursor: pointer;
+body.dark dialog {
+    background-color: #1f2937;
+    color: white;
+    border: 1px solid #374151;
 }
 
-#modalConta, #loginDialog{
-    background: white;
-    color: #333;
-    border-radius: 18px;
-    padding: 25px;
-    box-shadow: 0 15px 40px rgba(0,0,0,.25);
-}
-
-dialog::backdrop{
-    background: rgba(0,0,0,.5);
-    backdrop-filter: blur(3px);
-}
-
-#loginDialog button, #modalConta button {
-    width: 70px;
-    text-align: center;
+body.dark dialog input {
+    background-color: #374151;
     color: white;
     border: none;
-    border-radius: 5px;
-    transition: 0.3s;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.452);
 }
 
-#modalConta button {
-    margin-top: 10px;
+body.dark dialog input::placeholder {
+    color: #9ca3af;
 }
 
-#loginDialog .cancel, #modalConta .cancel {
-    background-color: rgb(153, 28, 28) ;
+body.dark dialog label {
+    color: #d1d5db;
 }
 
-#loginDialog .cancel:hover, #modalConta .cancel:hover {
-    background-color: rgb(197, 58, 58);
-}
-
-#loginDialog .submit, #modalConta .submit {
-    margin-right: 37px;
-    background-color: rgb(23, 100, 23);
-}
-
-#modalConta .submit {
-    margin-right: 215px;
-}
-
-#loginDialog .submit:hover, #modalConta .submit:hover {
-    background-color: rgb(5, 167, 5);
-}
-
-/*configurações do modo escuro*/
-
-.dark{
-    background: #1b1d21;
-}
-
-.dark .contas{
-    background: #1b1d21;
-}
-
-.dark .contas div{
-    background: #2b2e34;
+body.dark .historico {
+    background-color: #111827;
     color: white;
 }
 
-.dark .dinheiro{
-    background: #2b2e34;
-    color: white;
+
+body.dark #btnAdd {
+    box-shadow: 0 0 20px rgba(34,197,94,.35);
 }
 
-.dark nav{
-    background: #24262b;
-    border-right: 1px solid #333;
-}
 
-.dark header{
-    background: linear-gradient(90deg,#0d4f28,#15803d);
-}
-
-.dark .icones span:hover{
-    background: #3b3d44;
-}
-
-.dark #btnDarkMode{
+body.dark #logo {
     background: rgba(255,255,255,.15);
 }
 
+body.dark #btnDark {
+    background: rgba(255,255,255,.15);
+    color: white;
+}
