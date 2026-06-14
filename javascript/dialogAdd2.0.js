@@ -32,6 +32,31 @@ fecharLogin.addEventListener("click", (e) =>{
     e.preventDefault(); loginDialog.close()
 });
 
+const btnExcluirConta = document.getElementById('excluirContaBtn');
+
+btnExcluirConta.addEventListener('click', () => {
+
+    const confirmar = confirm(
+        'Tem certeza que deseja excluir sua conta? Esta ação não poderá ser desfeita.'
+    );
+
+    if (!confirmar) return;
+
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+    usuarios = usuarios.filter(
+        usuario => usuario.emailUser !== usuarioLogado.emailUser
+    );
+
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+    localStorage.removeItem('usuarioLogado');
+
+    alert('Conta excluída com sucesso!');
+
+    window.location.href = 'cadastro.html';
+});
+
 // Logout //
 const btnLogout = document.getElementById('logoutBtn')
 btnLogout.addEventListener('click', () => {

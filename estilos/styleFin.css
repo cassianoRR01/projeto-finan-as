@@ -238,6 +238,18 @@ dialog {
     gap: 20px;
 }
 
+#loginDialog p#excluirContaBtn {
+    color: rgb(185, 59, 59);
+    text-align: center;
+    margin: 10px 0px 5px 0px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#loginDialog p#excluirContaBtn:hover {
+    text-decoration: underline;
+}
+
 #infoUsuario {
     text-align: center;
 }
